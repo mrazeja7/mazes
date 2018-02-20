@@ -1,24 +1,27 @@
 extends KinematicBody
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
 var speed = 500
 var direction = Vector3()
 var gravity = -9.8
 var velocity = Vector3()
 
+#camera control
+var camera
+var third_person = false
 var view_sensitivity = 0.2
 var yaw = 0
 var pitch = 0
 
-var camera
-var third_person = false
+var pos_label
+
+func _process(delta):
+	pos_label.text = ("%s %s" % [self.translation.x, self.translation.z])
 
 func _ready():
 	set_process_input(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera = get_node("yaw/Camera")
+	pos_label = get_node("poslabel")
 
 func _enter_scene():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -28,16 +31,7 @@ func _exit_scene():
 
 func _physics_process(delta):
 	var aim = get_node("yaw").get_global_transform().basis
-#	print(str(aim))
-#	direction = Vector3()
-#	if Input.is_action_pressed("ui_left"):
-#		direction.x -= 1
-#	if Input.is_action_pressed("ui_right"):
-#		direction.x += 1
-#	if Input.is_action_pressed("ui_up"):
-#		direction.z -= 1
-#	if Input.is_action_pressed("ui_down"):
-#		direction.z += 1
+	
 	direction = Vector3()
 	if Input.is_action_pressed("ui_left") or Input.is_key_pressed(KEY_A):
 		direction -= aim[0]
@@ -65,7 +59,7 @@ func _physics_process(delta):
 	if is_on_floor() and Input.is_key_pressed(KEY_SPACE):
 		velocity.y = 10
 		
-func rotate_camera():
+func change_pov():
 	if not third_person:
 		third_person = true
 		camera.translate(Vector3(0,0.75,1.5))
@@ -80,8 +74,8 @@ func _input(ie):
 	if ie is InputEventKey and Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 		pass
-	if Input.is_key_pressed(KEY_C):
-		rotate_camera()
+	if ie is InputEventKey and Input.is_key_pressed(KEY_C):
+		change_pov()
 		pass
 	
 	if ie is InputEventKey and Input.is_key_pressed(KEY_F):

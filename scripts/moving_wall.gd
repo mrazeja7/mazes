@@ -1,9 +1,6 @@
 extends Spatial
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-var moveBy = Vector3()
+var move_by = Vector3(0, 0, 0.2)
 var direction_switch_interval = 2.0
 var since_direction_switch = 0
 var direction = 1
@@ -11,7 +8,6 @@ var direction = 1
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	moveBy = Vector3(0, 0, 0.2)
 	pass
 
 func _process(delta):
@@ -23,6 +19,6 @@ func _process(delta):
 		since_direction_switch = 0.0
 		direction *= -1
 	var tmp = self.translation
-	tmp += direction * moveBy
+	tmp += direction * move_by
 	self.translation = tmp
 	pass

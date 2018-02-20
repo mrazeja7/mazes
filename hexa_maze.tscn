@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/hexagonal_floor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/wall.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scripts/wall.gd" type="Script" id=3]
+[ext_resource path="res://scripts/moving_wall.gd" type="Script" id=3]
 [ext_resource path="res://assets/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/player.gd" type="Script" id=5]
 
@@ -12,13 +12,12 @@
 
 [node name="wall" parent="." index="1" instance=ExtResource( 2 )]
 
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -34.9783, 2.82982, -80 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 3, 0, -2.5, 0, -1.09278e-07, -34.9783, 2.5, -80 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="player" parent="." index="2" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06112, 0 )
 script = ExtResource( 5 )
 
@@ -47,6 +46,23 @@ enabled = false
 exclude_parent = true
 cast_to = Vector3( 0, -1, 0 )
 collision_mask = 1
+
+[node name="poslabel" type="Label" parent="player" index="9"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="3"]
 
