@@ -1,6 +1,6 @@
 extends Spatial
 
-var move_by = Vector3(0, 0, 0.2)
+var move_by = Vector3(0.25, 0, 0)
 var direction_switch_interval = 2.0
 var since_direction_switch = 0
 var direction = 1
