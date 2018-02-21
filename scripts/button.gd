@@ -15,3 +15,11 @@ func _ready():
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	pass
+
+func use(object):
+	print(object.get_meta("name")," is attempting to use button")
+	
+	var moving_wall = get_tree().get_root().get_node("maze/walls/moving_wall")
+	print(moving_wall)
+	moving_wall.move_by = Vector3(0,0.25,0)
+	pass

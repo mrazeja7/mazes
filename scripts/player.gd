@@ -59,6 +59,8 @@ func _physics_process(delta):
 	#jump
 	if is_on_floor() and Input.is_key_pressed(KEY_SPACE):
 		velocity.y = 10
+	if is_on_floor() and Input.is_key_pressed(KEY_H):
+		velocity.y = 20
 		
 func use_thing():
 #	print("use")
@@ -66,7 +68,9 @@ func use_thing():
 	if ray.is_colliding():
 		var object = ray.get_collider()
 		var type = object.get_meta("type")
-		print("attempting to use ",object," of type ",type," and name ",object.get_meta("name"))
+		if type == "usable":
+	#		print("attempting to use ",object," of type ",type," and name ",object.get_meta("name"))
+			object.get_node("..").use(self)
 	pass
 	
 func change_pov():
