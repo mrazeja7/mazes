@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/hexagonal_floor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/wall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/moving_wall.gd" type="Script" id=3]
-[ext_resource path="res://assets/player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scripts/player.gd" type="Script" id=5]
-[ext_resource path="res://assets/button.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scripts/button.gd" type="Script" id=7]
+[ext_resource path="res://scripts/elevator.gd" type="Script" id=4]
+[ext_resource path="res://assets/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/player.gd" type="Script" id=6]
+[ext_resource path="res://assets/button.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/button.gd" type="Script" id=8]
 
 [node name="maze" type="Spatial" index="0"]
 
@@ -27,7 +28,18 @@ visible = false
 script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="fence" type="Spatial" parent="walls" index="1"]
+[node name="elevator" parent="walls" index="1" instance=ExtResource( 2 )]
+
+transform = Transform( -0.321506, 0.337163, 2.18558e-08, 0, -2.94757e-08, 1, 0.185622, 0.583983, 3.78554e-08, -5.19869, -1.5904, -194.577 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="MeshInstance" parent="walls/elevator" index="0"]
+
+editor/display_folded = true
+_sections_unfolded = [ "Geometry", "Transform", "material" ]
+
+[node name="fence" type="Spatial" parent="walls" index="2"]
 
 editor/display_folded = true
 
@@ -83,7 +95,7 @@ transform = Transform( -1.82408, 0, -0.5, 0, 1, 0, 1.05313, 0, -0.866025, -5.1, 
 
 transform = Transform( -0.967682, 0, -0.5, 0, 1, 0, 0.558691, 0, -0.866026, -15.125, -0.2904, -190.15 )
 
-[node name="maze1" type="Spatial" parent="walls" index="2"]
+[node name="maze1" type="Spatial" parent="walls" index="3"]
 
 _sections_unfolded = [ "Visibility" ]
 
@@ -93,7 +105,7 @@ transform = Transform( -1.78814e-07, 0, -1, 0, 1, 0, 1.98336, 0, -5.66244e-07, -
 
 [node name="wall23" parent="walls/maze1" index="1" instance=ExtResource( 2 )]
 
-transform = Transform( 1.71764, 0, -0.500001, 0, 1, 0, 0.991679, 0, 0.866026, -10.7629, -0.2904, -184.095 )
+transform = Transform( 1.71764, 0, -0.500001, 0, 1, 0, 0.99168, 0, 0.866026, -10.7629, -0.2904, -184.095 )
 
 [node name="wall37" parent="walls/maze1" index="2" instance=ExtResource( 2 )]
 
@@ -111,171 +123,235 @@ transform = Transform( 0.637675, 0, -0.500002, 0, 1, 0, 0.368162, 0, 0.866028, -
 
 transform = Transform( 0.637675, 0, -0.500002, 0, 1, 0, 0.368162, 0, 0.866028, -7.4236, -0.2904, -191.162 )
 
-[node name="wall39" parent="walls/maze1" index="6" instance=ExtResource( 2 )]
+[node name="wall63" parent="walls/maze1" index="6" instance=ExtResource( 2 )]
 
-transform = Transform( 1.71764, 0, -0.500001, 0, 1, 0, 0.99168, 0, 0.866026, -8.49207, -0.2904, -188.062 )
+transform = Transform( 0.637675, 0, -0.500002, 0, 1, 0, 0.368162, 0, 0.866028, 2.00184, -0.2904, -186.587 )
 
-[node name="wall24" parent="walls/maze1" index="7" instance=ExtResource( 2 )]
+[node name="wall74" parent="walls/maze1" index="7" instance=ExtResource( 2 )]
+
+transform = Transform( 0.637675, 0, -0.500002, 0, 1, 0, 0.368162, 0, 0.866028, 4.44837, -0.2904, -185.174 )
+
+[node name="wall75" parent="walls/maze1" index="8" instance=ExtResource( 2 )]
+
+transform = Transform( 0.637675, 0, -0.500002, 0, 1, 0, 0.368162, 0, 0.866028, 6.44025, -0.2904, -184.025 )
+
+[node name="wall39" parent="walls/maze1" index="9" instance=ExtResource( 2 )]
+
+transform = Transform( 1.63176, 0, -0.500001, 0, 1, 0, 0.942097, 0, 0.866027, -8.44293, -0.2904, -188.23 )
+
+[node name="wall24" parent="walls/maze1" index="10" instance=ExtResource( 2 )]
 
 transform = Transform( -4.17233e-07, 0, -1, 0, 1, 0, 1.28919, 0, -2.08616e-07, -10.756, -0.2904, -178.383 )
 
-[node name="wall27" parent="walls/maze1" index="8" instance=ExtResource( 2 )]
+[node name="wall27" parent="walls/maze1" index="11" instance=ExtResource( 2 )]
 
 transform = Transform( -4.17233e-07, 0, -1, 0, 1, 0, 1.28919, 0, -2.08616e-07, -10.7959, -0.2904, -175.502 )
 
-[node name="wall25" parent="walls/maze1" index="9" instance=ExtResource( 2 )]
+[node name="wall25" parent="walls/maze1" index="12" instance=ExtResource( 2 )]
 
 transform = Transform( -4.17233e-07, 0, -1, 0, 1, 0, 1.28919, 0, -2.08616e-07, -10.7649, -0.2904, -180.399 )
 
-[node name="wall53" parent="walls/maze1" index="10" instance=ExtResource( 2 )]
+[node name="wall53" parent="walls/maze1" index="13" instance=ExtResource( 2 )]
 
 transform = Transform( -4.17233e-07, 0, -1, 0, 1, 0, 1.28919, 0, -2.08616e-07, 10.5044, -0.2904, -179.66 )
 
-[node name="wall54" parent="walls/maze1" index="11" instance=ExtResource( 2 )]
+[node name="wall54" parent="walls/maze1" index="14" instance=ExtResource( 2 )]
 
 transform = Transform( -4.17233e-07, 0, -1, 0, 1, 0, 1.28919, 0, -2.08616e-07, 10.5383, -0.2904, -180.401 )
 
-[node name="wall58" parent="walls/maze1" index="12" instance=ExtResource( 2 )]
+[node name="wall57" parent="walls/maze1" index="15" instance=ExtResource( 2 )]
+
+transform = Transform( -4.17233e-07, 0, -1, 0, 1, 0, 1.28919, 0, -2.08616e-07, 8.33836, -0.2904, -177.576 )
+
+[node name="wall76" parent="walls/maze1" index="16" instance=ExtResource( 2 )]
+
+transform = Transform( -4.17233e-07, 0, -1, 0, 1, 0, 1.28919, 0, -2.08616e-07, 8.33837, -0.2904, -179.276 )
+
+[node name="wall58" parent="walls/maze1" index="17" instance=ExtResource( 2 )]
 
 transform = Transform( -4.17233e-07, 0, -1, 0, 1, 0, 1.28919, 0, -2.08616e-07, 10.5526, -0.2904, -175.127 )
 
-[node name="wall17" parent="walls/maze1" index="13" instance=ExtResource( 2 )]
+[node name="wall17" parent="walls/maze1" index="18" instance=ExtResource( 2 )]
 
 transform = Transform( -1.78814e-07, 0, -1, 0, 1, 0, 1.98336, 0, -5.66244e-07, -15.7995, -0.2904, -174.519 )
 
-[node name="wall21" parent="walls/maze1" index="14" instance=ExtResource( 2 )]
+[node name="wall21" parent="walls/maze1" index="19" instance=ExtResource( 2 )]
 
-transform = Transform( -2.38419e-07, 0, -1, 0, 1, 0, 1.98336, 0, -5.66244e-07, -13.1597, -0.2904, -175.696 )
+transform = Transform( -8.9407e-08, 0, -1, 0, 1, 0, 0.74624, 0, -1.19209e-07, -13.1597, -0.2904, -171.946 )
 
-[node name="wall16" parent="walls/maze1" index="15" instance=ExtResource( 2 )]
+[node name="wall70" parent="walls/maze1" index="20" instance=ExtResource( 2 )]
+
+transform = Transform( -1.19209e-07, 0, -1, 0, 1, 0, 0.74624, 0, -1.49012e-07, -13.1597, -0.2904, -180.696 )
+
+[node name="wall77" parent="walls/maze1" index="21" instance=ExtResource( 2 )]
+
+transform = Transform( -1.19209e-07, 0, -1, 0, 1, 0, 0.74624, 0, -1.19209e-07, -13.1597, -0.2904, -178.572 )
+
+[node name="wall78" parent="walls/maze1" index="22" instance=ExtResource( 2 )]
+
+transform = Transform( -0.391776, 0, 1.19209e-07, 0, 1, 0, -4.47035e-08, 0, -1, -14.3097, -0.2904, -181.722 )
+
+[node name="wall16" parent="walls/maze1" index="23" instance=ExtResource( 2 )]
 
 transform = Transform( 1.71764, 0, -0.500001, 0, 1, 0, 0.991681, 0, 0.866026, -10.7836, -0.2904, -165.781 )
 
-[node name="wall18" parent="walls/maze1" index="16" instance=ExtResource( 2 )]
+[node name="wall18" parent="walls/maze1" index="24" instance=ExtResource( 2 )]
 
 transform = Transform( 1.71764, 0, -0.500001, 0, 1, 0, 0.991681, 0, 0.866026, -7.64978, -0.2904, -163.953 )
 
-[node name="wall19" parent="walls/maze1" index="17" instance=ExtResource( 2 )]
+[node name="wall19" parent="walls/maze1" index="25" instance=ExtResource( 2 )]
 
 transform = Transform( 1.71764, 0, -0.500001, 0, 1, 0, 0.991681, 0, 0.866026, -5.15662, -0.2904, -165.335 )
 
-[node name="wall26" parent="walls/maze1" index="18" instance=ExtResource( 2 )]
+[node name="wall26" parent="walls/maze1" index="26" instance=ExtResource( 2 )]
 
 transform = Transform( 1.71764, 0, -0.500001, 0, 1, 0, 0.991681, 0, 0.866026, -5.78653, -0.2904, -168.926 )
 
-[node name="wall55" parent="walls/maze1" index="19" instance=ExtResource( 2 )]
+[node name="wall55" parent="walls/maze1" index="27" instance=ExtResource( 2 )]
 
 transform = Transform( 1.71764, 0, -0.500001, 0, 1, 0, 0.991681, 0, 0.866026, 5.52477, -0.2904, -187.235 )
 
-[node name="wall28" parent="walls/maze1" index="20" instance=ExtResource( 2 )]
+[node name="wall28" parent="walls/maze1" index="28" instance=ExtResource( 2 )]
 
 transform = Transform( 1.71764, 0, -0.500001, 0, 1, 0, 0.991681, 0, 0.866026, -4.88186, -0.2904, -168.409 )
 
-[node name="wall29" parent="walls/maze1" index="21" instance=ExtResource( 2 )]
+[node name="wall29" parent="walls/maze1" index="29" instance=ExtResource( 2 )]
 
 transform = Transform( -1.71764, 0, -0.500001, 0, 1, 0, 0.991682, 0, -0.866028, 7.27204, -0.2904, -163.908 )
 
-[node name="wall34" parent="walls/maze1" index="22" instance=ExtResource( 2 )]
+[node name="wall34" parent="walls/maze1" index="30" instance=ExtResource( 2 )]
 
 transform = Transform( 5.96046e-08, 0, -1, 0, 1, 0, 1.98337, 0, -4.17233e-07, 15.9222, -0.2904, -174.676 )
 
-[node name="wall35" parent="walls/maze1" index="23" instance=ExtResource( 2 )]
+[node name="wall35" parent="walls/maze1" index="31" instance=ExtResource( 2 )]
 
 transform = Transform( 5.96046e-08, 0, -1, 0, 1, 0, 1.98337, 0, -4.17233e-07, 15.9066, -0.2904, -181.653 )
 
-[node name="wall49" parent="walls/maze1" index="24" instance=ExtResource( 2 )]
+[node name="wall49" parent="walls/maze1" index="32" instance=ExtResource( 2 )]
 
 transform = Transform( 5.96046e-08, 0, -1, 0, 1, 0, 1.98337, 0, -4.17233e-07, 15.906, -0.2904, -181.104 )
 
-[node name="wall36" parent="walls/maze1" index="25" instance=ExtResource( 2 )]
+[node name="wall36" parent="walls/maze1" index="33" instance=ExtResource( 2 )]
 
-transform = Transform( 5.96046e-08, 0, -1, 0, 1, 0, 1.98337, 0, -4.17233e-07, 13.2408, -0.2904, -175.871 )
+transform = Transform( 2.98023e-07, 0, -1, 0, 1, 0, 1.73545, 0, -3.57628e-07, 13.3503, -0.2904, -175.414 )
 
-[node name="wall30" parent="walls/maze1" index="26" instance=ExtResource( 2 )]
+[node name="wall30" parent="walls/maze1" index="34" instance=ExtResource( 2 )]
 
 transform = Transform( -1.71765, 0, -0.500001, 0, 1, 0, 0.991683, 0, -0.866029, 9.80518, -0.2904, -165.371 )
 
-[node name="wall51" parent="walls/maze1" index="27" instance=ExtResource( 2 )]
+[node name="wall51" parent="walls/maze1" index="35" instance=ExtResource( 2 )]
 
 transform = Transform( -1.71765, 0, -0.500001, 0, 1, 0, 0.991683, 0, -0.866029, 10.931, -0.2904, -166.021 )
 
-[node name="wall31" parent="walls/maze1" index="28" instance=ExtResource( 2 )]
+[node name="wall31" parent="walls/maze1" index="36" instance=ExtResource( 2 )]
 
-transform = Transform( -1.71765, 0, -0.500002, 0, 1, 0, 0.991684, 0, -0.86603, 5.19016, -0.2904, -168.364 )
+transform = Transform( -0.73, 0, -0.500003, 0, 1, 0, 0.421466, 0, -0.86603, 2.20239, -0.2904, -166.639 )
 
-[node name="wall42" parent="walls/maze1" index="29" instance=ExtResource( 2 )]
+[node name="wall71" parent="walls/maze1" index="37" instance=ExtResource( 2 )]
 
-transform = Transform( -0.553271, 0, -0.500003, 0, 1, 0, 0.319431, 0, -0.86603, -1.13545, -0.2904, -189.221 )
+transform = Transform( -0.73, 0, -0.500003, 0, 1, 0, 0.421466, 0, -0.86603, 8.45944, -0.2904, -170.252 )
 
-[node name="wall52" parent="walls/maze1" index="30" instance=ExtResource( 2 )]
+[node name="wall72" parent="walls/maze1" index="38" instance=ExtResource( 2 )]
 
-transform = Transform( -0.553271, 0, -0.500003, 0, 1, 0, 0.319431, 0, -0.86603, -4.36138, -0.2904, -187.359 )
+transform = Transform( -0.25288, 0, 0.86603, 0, 1, 0, -0.438, 0, -0.500003, 3.5501, -0.2904, -169.005 )
 
-[node name="wall41" parent="walls/maze1" index="31" instance=ExtResource( 2 )]
+[node name="wall52" parent="walls/maze1" index="39" instance=ExtResource( 2 )]
 
-transform = Transform( -1.00482, 0, -0.500003, 0, 1, 0, 0.580135, 0, -0.866031, -2.73794, -0.2904, -194.647 )
+transform = Transform( -0.779383, 0, -0.500003, 0, 1, 0, 0.449977, 0, -0.86603, 4.87181, -0.2904, -171.616 )
 
-[node name="wall46" parent="walls/maze1" index="32" instance=ExtResource( 2 )]
+[node name="wall73" parent="walls/maze1" index="40" instance=ExtResource( 2 )]
 
-transform = Transform( -1.00482, 0, -0.500003, 0, 1, 0, 0.580135, 0, -0.866031, -3.84212, -0.2904, -194.009 )
+transform = Transform( -0.779383, 0, -0.500003, 0, 1, 0, 0.449977, 0, -0.866031, 6.1492, -0.2904, -172.354 )
 
-[node name="wall43" parent="walls/maze1" index="33" instance=ExtResource( 2 )]
+[node name="wall42" parent="walls/maze1" index="41" instance=ExtResource( 2 )]
+
+transform = Transform( -0.663925, 0, -0.500003, 0, 1, 0, 0.383317, 0, -0.86603, -1.50774, -0.2904, -189.266 )
+
+[node name="wall41" parent="walls/maze1" index="42" instance=ExtResource( 2 )]
+
+transform = Transform( -1.00482, 0, -0.500003, 0, 1, 0, 0.580135, 0, -0.866031, -2.73793, -0.2904, -194.647 )
+
+[node name="wall46" parent="walls/maze1" index="43" instance=ExtResource( 2 )]
+
+transform = Transform( -1.00482, 0, -0.500003, 0, 1, 0, 0.580135, 0, -0.866031, -2.95444, -0.2904, -194.522 )
+
+[node name="wall43" parent="walls/maze1" index="44" instance=ExtResource( 2 )]
 
 transform = Transform( -1.00482, 0, -0.500003, 0, 1, 0, 0.580135, 0, -0.866031, -2.86438, -0.2904, -191.716 )
 
-[node name="wall44" parent="walls/maze1" index="34" instance=ExtResource( 2 )]
+[node name="wall44" parent="walls/maze1" index="45" instance=ExtResource( 2 )]
 
 transform = Transform( -1.00482, 0, 0.500003, 0, 1, 0, -0.580136, 0, -0.866031, 2.93409, -0.2904, -191.773 )
 
-[node name="wall56" parent="walls/maze1" index="35" instance=ExtResource( 2 )]
+[node name="wall56" parent="walls/maze1" index="46" instance=ExtResource( 2 )]
 
 transform = Transform( -1.00482, 0, 0.500003, 0, 1, 0, -0.580136, 0, -0.866031, 7.9206, -0.2904, -188.936 )
 
-[node name="wall57" parent="walls/maze1" index="36" instance=ExtResource( 2 )]
+[node name="wall59" parent="walls/maze1" index="47" instance=ExtResource( 2 )]
 
-transform = Transform( -0.628016, 0, -0.500004, 0, 1, 0, 0.362585, 0, -0.866032, 13.9082, -0.2904, -186.215 )
+transform = Transform( -0.502413, 0, -0.500004, 0, 1, 0, 0.290068, 0, -0.866032, 11.8514, -0.2904, -185.028 )
 
-[node name="wall59" parent="walls/maze1" index="37" instance=ExtResource( 2 )]
+[node name="wall67" parent="walls/maze1" index="48" instance=ExtResource( 2 )]
 
-transform = Transform( -0.628016, 0, -0.500004, 0, 1, 0, 0.362585, 0, -0.866032, 12.306, -0.2904, -185.29 )
+transform = Transform( -0.628016, 0, -0.500004, 0, 1, 0, 0.362585, 0, -0.866032, 13.8717, -0.2904, -183.279 )
 
-[node name="wall45" parent="walls/maze1" index="38" instance=ExtResource( 2 )]
+[node name="wall68" parent="walls/maze1" index="49" instance=ExtResource( 2 )]
 
-transform = Transform( -1.00482, 0, 0.500003, 0, 1, 0, -0.580136, 0, -0.866031, 3.17804, -0.2904, -194.801 )
+transform = Transform( -0.628016, 0, -0.500004, 0, 1, 0, 0.362585, 0, -0.866032, 12.4427, -0.2904, -182.454 )
 
-[node name="wall47" parent="walls/maze1" index="39" instance=ExtResource( 2 )]
+[node name="wall45" parent="walls/maze1" index="50" instance=ExtResource( 2 )]
+
+transform = Transform( -0.602895, 0, 0.500004, 0, 1, 0, -0.348082, 0, -0.866031, 3.84924, -0.2904, -194.413 )
+
+[node name="wall47" parent="walls/maze1" index="51" instance=ExtResource( 2 )]
 
 transform = Transform( -1.00482, 0, 0.500003, 0, 1, 0, -0.580136, 0, -0.866031, 6.91499, -0.2904, -192.628 )
 
-[node name="wall48" parent="walls/maze1" index="40" instance=ExtResource( 2 )]
+[node name="wall48" parent="walls/maze1" index="52" instance=ExtResource( 2 )]
 
 transform = Transform( -1.00482, 0, 0.500003, 0, 1, 0, -0.580136, 0, -0.866031, 11.0093, -0.2904, -190.286 )
 
-[node name="wall50" parent="walls/maze1" index="41" instance=ExtResource( 2 )]
+[node name="wall50" parent="walls/maze1" index="53" instance=ExtResource( 2 )]
 
 transform = Transform( -1.00482, 0, 0.500003, 0, 1, 0, -0.580136, 0, -0.866031, 13.0862, -0.2904, -189.09 )
 
-[node name="wall32" parent="walls/maze1" index="42" instance=ExtResource( 2 )]
+[node name="wall32" parent="walls/maze1" index="54" instance=ExtResource( 2 )]
 
 transform = Transform( -1.71765, 0, -0.500002, 0, 1, 0, 0.991684, 0, -0.86603, 8.24634, -0.2904, -167.271 )
 
-[node name="wall33" parent="walls/maze1" index="43" instance=ExtResource( 2 )]
+[node name="wall33" parent="walls/maze1" index="55" instance=ExtResource( 2 )]
 
 transform = Transform( -1.71765, 0, -0.500002, 0, 1, 0, 0.991684, 0, -0.86603, 4.80052, -0.2904, -165.339 )
 
-[node name="wall22" parent="walls/maze1" index="44" instance=ExtResource( 2 )]
+[node name="wall22" parent="walls/maze1" index="56" instance=ExtResource( 2 )]
 
 transform = Transform( 1.19209e-07, 0, -1, 0, 1, 0, 0.892516, 0, -8.9407e-08, -0.165067, -0.2904, -159.99 )
 
-[node name="wall61" parent="walls/maze1" index="45" instance=ExtResource( 2 )]
+[node name="wall61" parent="walls/maze1" index="57" instance=ExtResource( 2 )]
 
 transform = Transform( -0.521736, 0, -0.500002, 0, 1, 0, 0.301224, 0, -0.86603, -2.43643, -0.2904, -183.106 )
 
-[node name="wall62" parent="walls/maze1" index="46" instance=ExtResource( 2 )]
+[node name="wall79" parent="walls/maze1" index="58" instance=ExtResource( 2 )]
 
 transform = Transform( -0.521736, 0, -0.500002, 0, 1, 0, 0.301224, 0, -0.86603, -1.63641, -0.2904, -183.557 )
 
-[node name="wall20" parent="walls/maze1" index="47" instance=ExtResource( 2 )]
+[node name="wall69" parent="walls/maze1" index="59" instance=ExtResource( 2 )]
+
+transform = Transform( -0.179394, 0, 0.86603, 0, 1, 0, -0.310719, 0, -0.500002, -6.22795, -0.2904, -193.81 )
+
+[node name="wall66" parent="walls/maze1" index="60" instance=ExtResource( 2 )]
+
+transform = Transform( -0.376955, 0, -0.500002, 0, 1, 0, 0.217635, 0, -0.86603, 4.77095, -0.2904, -186.159 )
+
+[node name="wall64" parent="walls/maze1" index="61" instance=ExtResource( 2 )]
+
+transform = Transform( -0.521736, 0, -0.500002, 0, 1, 0, 0.301224, 0, -0.86603, -1.33759, -0.2904, -186.789 )
+
+[node name="wall65" parent="walls/maze1" index="62" instance=ExtResource( 2 )]
+
+transform = Transform( -0.521736, 0, -0.500002, 0, 1, 0, 0.301224, 0, -0.86603, -2.18195, -0.2904, -186.302 )
+
+[node name="wall20" parent="walls/maze1" index="63" instance=ExtResource( 2 )]
 
 transform = Transform( 1.71764, 0, -0.500001, 0, 1, 0, 0.991681, 0, 0.866026, -8.07885, -0.2904, -166.996 )
 
@@ -317,10 +393,10 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 transform = Transform( 1, 0, 1.49012e-08, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="player" parent="." index="3" instance=ExtResource( 4 )]
+[node name="player" parent="." index="3" instance=ExtResource( 5 )]
 
 transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -11.6, 1.76112, -14.375 )
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="yaw" type="Spatial" parent="player" index="7"]
@@ -422,11 +498,12 @@ directional_shadow_normal_bias = 0.8
 directional_shadow_bias_split_scale = 0.25
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
-_sections_unfolded = [ "Shadow" ]
+_sections_unfolded = [ "Light", "Shadow" ]
 
-[node name="button" parent="." index="5" instance=ExtResource( 6 )]
+[node name="button" parent="." index="5" instance=ExtResource( 7 )]
 
 transform = Transform( 0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, -13.0455, 0.5, -11.1455 )
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 
+[editable path="walls/elevator"]
