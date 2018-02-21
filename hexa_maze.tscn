@@ -23,6 +23,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 178.1 )
 [node name="moving_wall" parent="walls" index="0" instance=ExtResource( 2 )]
 
 transform = Transform( 0.9375, 0, 0, 0, 0.9, 0, 2.98023e-08, 0, 1, 13.3315, 2.5, -162.31 )
+visible = false
 script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
@@ -228,7 +229,7 @@ transform = Transform( -1.00482, 0, 0.500003, 0, 1, 0, -0.580136, 0, -0.866031, 
 
 [node name="wall56" parent="walls/maze1" index="35" instance=ExtResource( 2 )]
 
-transform = Transform( -1.00482, 0, 0.500003, 0, 1, 0, -0.580136, 0, -0.866031, 8.79444, -0.2904, -188.372 )
+transform = Transform( -1.00482, 0, 0.500003, 0, 1, 0, -0.580136, 0, -0.866031, 7.9206, -0.2904, -188.936 )
 
 [node name="wall57" parent="walls/maze1" index="36" instance=ExtResource( 2 )]
 
@@ -281,6 +282,7 @@ transform = Transform( 1.71764, 0, -0.500001, 0, 1, 0, 0.991681, 0, 0.866026, -8
 [node name="corridors" type="Spatial" parent="." index="2"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 211 )
+visible = false
 _sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 
 [node name="corridor" type="Spatial" parent="corridors" index="0"]
@@ -317,13 +319,13 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="player" parent="." index="3" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -11.6, 1.76112, -14.375 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="yaw" type="Spatial" parent="player" index="7"]
 
+editor/display_folded = true
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
@@ -366,6 +368,30 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="instr" type="Label" parent="player" index="9"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 833.0
+margin_top = 513.0
+margin_right = 1018.0
+margin_bottom = 595.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "arrow keys or WSAD to move
+space to jump
+E to use items
+F to toggle full screen
+esc to exit"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
