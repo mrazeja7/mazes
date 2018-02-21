@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/hexagonal_floor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/wall.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/player.gd" type="Script" id=5]
 [ext_resource path="res://assets/button.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/button.gd" type="Script" id=7]
 
 [node name="maze" type="Spatial" index="0"]
 
@@ -124,14 +125,16 @@ near = 0.05
 far = 100.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="ray" type="RayCast" parent="player" index="8"]
+[node name="ray" type="RayCast" parent="player/yaw/Camera" index="0"]
 
-enabled = false
+transform = Transform( -1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0.124999, 0 )
+enabled = true
 exclude_parent = true
 cast_to = Vector3( 0, -1, 0 )
 collision_mask = 1
+_sections_unfolded = [ "Transform" ]
 
-[node name="poslabel" type="Label" parent="player" index="9"]
+[node name="poslabel" type="Label" parent="player" index="8"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -178,6 +181,7 @@ _sections_unfolded = [ "Shadow" ]
 
 [node name="button" parent="." index="5" instance=ExtResource( 6 )]
 
-transform = Transform( 0.866025, 0, 0.5, 0, 1.2, 0, -0.5, 0, 0.866025, 0.228461, 0, -4.40429 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+script = ExtResource( 7 )
 
 

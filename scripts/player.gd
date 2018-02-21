@@ -22,6 +22,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera = get_node("yaw/Camera")
 	pos_label = get_node("poslabel")
+	self.set_meta("name","player")
 
 func _enter_scene():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -59,6 +60,15 @@ func _physics_process(delta):
 	if is_on_floor() and Input.is_key_pressed(KEY_SPACE):
 		velocity.y = 10
 		
+func use_thing():
+#	print("use")
+	var ray = self.get_node("yaw/Camera/ray")
+	if ray.is_colliding():
+		var object = ray.get_collider()
+		var type = object.get_meta("type")
+		print("attempting to use ",object," of type ",type," and name ",object.get_meta("name"))
+	pass
+	
 func change_pov():
 	if not third_person:
 		third_person = true
@@ -76,6 +86,10 @@ func _input(ie):
 		pass
 	if ie is InputEventKey and Input.is_key_pressed(KEY_C):
 		change_pov()
+		pass
+		
+	if ie is InputEventKey and Input.is_key_pressed(KEY_E):
+		use_thing()
 		pass
 	
 	if ie is InputEventKey and Input.is_key_pressed(KEY_F):
