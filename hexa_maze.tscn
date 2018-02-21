@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/hexagonal_floor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/wall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/moving_wall.gd" type="Script" id=3]
 [ext_resource path="res://assets/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/player.gd" type="Script" id=5]
+[ext_resource path="res://assets/button.tscn" type="PackedScene" id=6]
 
 [node name="maze" type="Spatial" index="0"]
 
@@ -18,8 +19,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 178.1 )
 
 [node name="wall" parent="walls" index="0" instance=ExtResource( 2 )]
 
-transform = Transform( 2.5, 0, 0, 0, 3, 0, 0, 0, 1, -13.2783, 2.5, -168.8 )
+transform = Transform( 0.9375, 0, 0, 0, 0.9, 0, 0, 0, 1, -10.6255, 2.5, -186.555 )
 script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="wall2" parent="walls" index="1" instance=ExtResource( 2 )]
 
@@ -173,5 +175,9 @@ directional_shadow_bias_split_scale = 0.25
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Shadow" ]
+
+[node name="button" parent="." index="5" instance=ExtResource( 6 )]
+
+transform = Transform( 0.866025, 0, 0.5, 0, 1.2, 0, -0.5, 0, 0.866025, 0.228461, 0, -4.40429 )
 
 
