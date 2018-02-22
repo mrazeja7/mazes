@@ -19,7 +19,7 @@ func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
 #	print(delta)
-	print(move)
+#	print(move)
 	if move == true:
 		since_direction_switch += delta
 		if (since_direction_switch > direction_switch_interval):
