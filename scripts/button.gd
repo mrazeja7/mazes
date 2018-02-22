@@ -26,27 +26,18 @@ func _ready():
 #	# Update game logic here.
 #	pass
 
-func swap_walls():
+func swap_levels():
 	if not swapped:
 		swapped = true
-#		wall_parent.remove_child(set1)
 		wall_parent.add_child(set2)
-#		set2.visible = true
-#		set1 = null
-		set1.start_animation(true, -1)
+		set1.start_animation(true, -1)		
 		set2.start_animation(false, 1)
-#		set1.animation = true
-#		set1.destroy = true
-#		set2.animation = true
-#		set1.destroy = false
-#		set2.direction = 1
-	#	var walls = get_nodes_in_group("../walls/maze1")
-	#	print(walls)
+		set2.visible = true
 	pass
 
 func use(object):
 	print(object.get_meta("name")," is attempting to use button")
-	swap_walls()
+	swap_levels()
 #	var elevator = get_tree().get_root().get_node("maze/walls/elevator")
 #	print(elevator)
 #	elevator.move = true
