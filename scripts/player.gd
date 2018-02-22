@@ -11,6 +11,7 @@ var third_person = false
 var view_sensitivity = 0.15
 var yaw = 0
 var pitch = 0
+var flashlight
 
 var pos_label
 
@@ -23,6 +24,8 @@ func _ready():
 	camera = get_node("yaw/Camera")
 	pos_label = get_node("poslabel")
 	self.set_meta("name","player")
+	flashlight = get_node("yaw/SpotLight")
+	flashlight.visible = false
 
 func _enter_scene():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -102,7 +105,7 @@ func _input(ie):
 		pass
 		
 	if ie is InputEventKey and Input.is_key_pressed(KEY_L):
-		get_node("yaw/SpotLight").visible = not get_node("yaw/SpotLight").visible
+		flashlight.visible = not flashlight.visible
 		pass
 	#mouse movement
 	if ie is InputEventMouseMotion:
