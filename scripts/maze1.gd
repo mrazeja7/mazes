@@ -4,10 +4,10 @@ extends Spatial
 # var a = 2
 # var b = "textvar"
 var animation = false
-var frames_left = 90
+var frames_left = 90 #animation duration
 var frame_offset = 0
 var frames_since_start = 0
-var movement = Vector3(0, 0.05, 0)
+var movement = Vector3(0, 0.05, 0) #change in Y-coord in each frame
 var direction = -1
 var destroy = false
 
@@ -19,10 +19,11 @@ func _ready():
 
 func start_animation(dest, dir):
 	self.animation = true
-	self.destroy = dest
-	self.direction = dir
+	self.destroy = dest #free the node after the animation is complete?
+	self.direction = dir #sinking or rising
 	pass
 	
+# the walls start moving up/down after an optional timeoout period
 func _process(delta):
 	if animation:
 		frames_since_start += 1

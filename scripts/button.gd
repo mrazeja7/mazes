@@ -13,14 +13,14 @@ func _ready():
 	# Initialization here
 	self.get_node("Area").set_meta("type","usable")
 	self.get_node("Area").set_meta("name","button")
-	set1 = get_tree().get_root().get_node("maze/walls/maze1")
+	set1 = get_tree().get_root().get_node("maze/walls/maze1") #a set of walls that makes up the first part of the maze
 	set2 = get_tree().get_root().get_node("maze/walls/maze2")
 	wall_parent = get_tree().get_root().get_node("maze/walls")
 #	print(set1)
 #	print(set2)
 	set1.visible = true
 	set2.visible = false
-	wall_parent.remove_child(set2)
+	wall_parent.remove_child(set2) #we don't want the second set yet
 	pass
 
 #func _process(delta):
@@ -32,7 +32,7 @@ func swap_levels():
 	if not swapped:
 		swapped = true
 		wall_parent.add_child(set2)
-		set1.start_animation(true, -1)		
+		set1.start_animation(true, -1)
 		set2.start_animation(false, 1)
 		set2.visible = true
 		self.get_node("OmniLight").visible = false

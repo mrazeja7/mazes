@@ -1,5 +1,5 @@
 extends KinematicBody
-
+#most of the camera control and movement is taken from a tutorial I found online
 var speed = 500
 var direction = Vector3()
 var gravity = -9.8

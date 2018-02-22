@@ -180,7 +180,6 @@ transform = Transform( -0.967682, 0, -0.5, 0, 1, 0, 0.558691, 0, -0.866026, -15.
 [node name="maze1" type="Spatial" parent="walls" index="3"]
 
 editor/display_folded = true
-visible = false
 script = ExtResource( 5 )
 _sections_unfolded = [ "Visibility" ]
 
@@ -454,6 +453,8 @@ transform = Transform( -0.521736, 0, -0.500002, 0, 1, 0, 0.301224, 0, -0.86603, 
 
 [node name="maze2" type="Spatial" parent="walls" index="4"]
 
+editor/display_folded = true
+visible = false
 script = ExtResource( 6 )
 _sections_unfolded = [ "Visibility" ]
 
@@ -746,6 +747,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="player" parent="." index="3" instance=ExtResource( 8 )]
 
+editor/display_folded = true
 transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -11.25, 1.76112, -13.7688 )
 script = ExtResource( 9 )
 _sections_unfolded = [ "Transform" ]
