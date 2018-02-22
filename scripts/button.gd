@@ -18,6 +18,8 @@ func _ready():
 	wall_parent = get_tree().get_root().get_node("maze/walls")
 #	print(set1)
 #	print(set2)
+	set1.visible = true
+	set2.visible = false
 	wall_parent.remove_child(set2)
 	pass
 
@@ -33,6 +35,7 @@ func swap_levels():
 		set1.start_animation(true, -1)		
 		set2.start_animation(false, 1)
 		set2.visible = true
+		self.get_node("OmniLight").visible = false
 	pass
 
 func use(object):

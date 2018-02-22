@@ -8,7 +8,7 @@ var velocity = Vector3()
 #camera control
 var camera
 var third_person = false
-var view_sensitivity = 0.2
+var view_sensitivity = 0.15
 var yaw = 0
 var pitch = 0
 
@@ -98,9 +98,12 @@ func _input(ie):
 	
 	if ie is InputEventKey and Input.is_key_pressed(KEY_F):
 		OS.window_fullscreen = not OS.window_fullscreen
-		get_node("crosshair/Label").visible = not get_node("crosshair/Label").visible
+#		get_node("crosshair/Label").visible = not get_node("crosshair/Label").visible
 		pass
 		
+	if ie is InputEventKey and Input.is_key_pressed(KEY_L):
+		get_node("yaw/SpotLight").visible = not get_node("yaw/SpotLight").visible
+		pass
 	#mouse movement
 	if ie is InputEventMouseMotion:
 		yaw = fmod(yaw - ie.relative.x * view_sensitivity, 360)
