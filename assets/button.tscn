@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=1]
 
 render_priority = 0
 flags_transparent = false
@@ -52,23 +52,23 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo" ]
 
-[sub_resource type="CubeMesh" id=7]
+[sub_resource type="CubeMesh" id=2]
 
-material = SubResource( 6 )
+material = SubResource( 1 )
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="ConvexPolygonShape" id=8]
+[sub_resource type="ConvexPolygonShape" id=3]
 
 points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
 
-[sub_resource type="ConvexPolygonShape" id=9]
+[sub_resource type="ConvexPolygonShape" id=4]
 
 points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=5]
 
 render_priority = 0
 flags_transparent = false
@@ -124,9 +124,9 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Emission" ]
 
-[sub_resource type="CapsuleMesh" id=5]
+[sub_resource type="CapsuleMesh" id=6]
 
-material = SubResource( 4 )
+material = SubResource( 5 )
 radius = 1.0
 mid_height = 1.0
 radial_segments = 64
@@ -169,7 +169,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 7 )
+mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
 
@@ -187,13 +187,13 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="Area/stand/StaticBody" index="0"]
 
 transform = Transform( 0.925, 0, 0, 0, 1.2, 0, 0, 0, 0.925, 0, 0.208333, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 disabled = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Area" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1.20413, 0, 0, 0, 1, 0, 0.216667, 0 )
-shape = SubResource( 9 )
+shape = SubResource( 4 )
 disabled = false
 
 [node name="button" type="MeshInstance" parent="Area" index="2"]
@@ -208,7 +208,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 5 )
+mesh = SubResource( 6 )
 skeleton = NodePath("..")
 material/0 = null
 

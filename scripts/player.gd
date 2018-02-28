@@ -72,8 +72,19 @@ func use_thing():
 		var object = ray.get_collider()
 		var type = object.get_meta("type")
 		if type == "usable":
-	#		print("attempting to use ",object," of type ",type," and name ",object.get_meta("name"))
+#			print("attempting to use ",object," of type ",type," and name ",object.get_meta("name"))
 			object.get_node("..").use(self)
+	pass
+	
+func shoot():
+	var gun = self.get_node("yaw/Camera/gun")
+	if gun.is_colliding():
+		var object = gun.get_collider()
+		var type = object.get_meta("type")
+		print("shooting at ",object)#," of type ",type," and name ",object.get_meta("name"))
+		if type == "killable":
+#			print("attempting to use ",object," of type ",type," and name ",object.get_meta("name"))
+			object.get_node("..").onDeath()
 	pass
 	
 func change_pov():
@@ -97,6 +108,10 @@ func _input(ie):
 		
 	if ie is InputEventKey and Input.is_key_pressed(KEY_E):
 		use_thing()
+		pass
+		
+	if ie is InputEventKey and Input.is_key_pressed(KEY_N):
+		shoot()
 		pass
 	
 	if ie is InputEventKey and Input.is_key_pressed(KEY_F):
