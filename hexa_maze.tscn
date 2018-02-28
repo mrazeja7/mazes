@@ -90,7 +90,7 @@ adjustment_brightness = 1.0
 adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 
-[node name="maze" type="Spatial" index="0"]
+[node name="maze" type="Spatial"]
 
 transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0, 0 )
 
@@ -748,7 +748,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 [node name="player" parent="." index="3" instance=ExtResource( 8 )]
 
 editor/display_folded = true
-transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -11.25, 1.76112, -13.7688 )
+transform = Transform( 1.12583, 0, 0.65, 0, 1.3, 0, -0.65, 0, 1.12583, -11.25, 1.76112, -13.7688 )
 script = ExtResource( 9 )
 _sections_unfolded = [ "Transform" ]
 
