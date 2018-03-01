@@ -101,27 +101,23 @@ func change_pov():
 func _input(ie):
 	if ie is InputEventKey and Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
-		pass
+		
 	if ie is InputEventKey and Input.is_key_pressed(KEY_C):
 		change_pov()
-		pass
 		
 	if ie is InputEventKey and Input.is_key_pressed(KEY_E):
 		use_thing()
-		pass
 		
-	if ie is InputEventKey and Input.is_key_pressed(KEY_CONTROL):
+	if ie is InputEventMouseButton and ie.button_index == BUTTON_LEFT: # triggers twice; on mouse-up and mouse-down
 		shoot()
-		pass
 	
 	if ie is InputEventKey and Input.is_key_pressed(KEY_F):
 		OS.window_fullscreen = not OS.window_fullscreen
 #		get_node("crosshair/Label").visible = not get_node("crosshair/Label").visible
-		pass
 		
 	if ie is InputEventKey and Input.is_key_pressed(KEY_L):
 		flashlight.visible = not flashlight.visible
-		pass
+		
 	#mouse movement
 	if ie is InputEventMouseMotion:
 		yaw = fmod(yaw - ie.relative.x * view_sensitivity, 360)
