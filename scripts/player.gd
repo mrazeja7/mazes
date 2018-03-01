@@ -65,8 +65,8 @@ func _physics_process(delta):
 	if is_on_floor() and Input.is_key_pressed(KEY_H):
 		velocity.y = 20
 		
+# cast a short ray and call the use() method if the object we hit is usable
 func use_thing():
-#	print("use")
 	var ray = self.get_node("yaw/Camera/ray")
 	if ray.is_colliding():
 		var object = ray.get_collider()
@@ -76,14 +76,14 @@ func use_thing():
 			object.get_node("..").use(self)
 	pass
 	
+# cast a ray (a much longer one than the "use item" ray), call onDeath() if the object being hit is killable
 func shoot():
 	var gun = self.get_node("yaw/Camera/gun")
 	if gun.is_colliding():
 		var object = gun.get_collider()
-		var type = object.get_meta("type")
-		print("shooting at ",object)#," of type ",type," and name ",object.get_meta("name"))
+		var type = object.get_meta("type") # spams errors if the object doesn't have a type set, doesn't crash tho
+		print("shooting at ",object)
 		if type == "killable":
-#			print("attempting to use ",object," of type ",type," and name ",object.get_meta("name"))
 			object.get_node("..").onDeath()
 	pass
 	
@@ -110,7 +110,7 @@ func _input(ie):
 		use_thing()
 		pass
 		
-	if ie is InputEventKey and Input.is_key_pressed(KEY_N):
+	if ie is InputEventKey and Input.is_key_pressed(KEY_CONTROL):
 		shoot()
 		pass
 	
