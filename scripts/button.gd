@@ -3,8 +3,7 @@ extends Spatial
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-var swapped = false
-var done = false
+var state = 1
 var set1
 var set2
 var set3
@@ -40,43 +39,43 @@ func _ready():
 func swap_to_4():
 	wall_parent.add_child(set4)
 	set4.visible = true
+	set3.start_animation(true, -3, 0)
+	set4.start_animation(false, 3, 45)
 	self.get_node("OmniLight").visible = true
 	wall_parent.get_node("../DirectionalLight").visible = false
 	ghost_parent.add_child(ghost)
 	self.translation.y = -20
 	ghost.translation.y += 20
-	set3.queue_free()
 
 func swap_to_3():
-	if done:
-		swap_to_4()
-		return
-	done = true
-		
 	wall_parent.add_child(set3)
-	set2.start_animation(true, -1)
-#	set3.start_animation(false, 1)
+	set2.start_animation(true, -1, 0)
+	set3.start_animation(false, 3, 45)
 	set3.visible = true
 	self.get_node("OmniLight").visible = true
 	wall_parent.get_node("../DirectionalLight").visible = false
 	wall_parent.get_node("../floor").translation -= Vector3(0,0.5,0)
 	self.translation.x = 0
 	self.translation.z = 0
-
+	
+# swaps to the second set of walls. Code could be much nicer, but a lot of weird stuff happens in each "level"
 func swap_to_2():
-	if not swapped:
-		swapped = true
-		wall_parent.add_child(set2)
-		set1.start_animation(true, -1)
-		set2.start_animation(false, 1)
-		set2.visible = true
-		self.get_node("OmniLight").visible = false
-		self.translation = Vector3(-17.43, 0.475, -3.13)
-	else:
-		swap_to_3()
+	wall_parent.add_child(set2)
+	set1.start_animation(true, -1, 0)
+	set2.start_animation(false, 1, 30)
+	set2.visible = true
+	self.get_node("OmniLight").visible = false
+	self.translation = Vector3(-17.43, 0.475, -3.13)
 	pass
 
 func use(object):
 	print(object.get_meta("name")," is attempting to use button")
-	swap_to_2()
+	match(state):
+		1:
+			swap_to_2()
+		2:
+			swap_to_3()
+		3:
+			swap_to_4()
+	state += 1
 	pass

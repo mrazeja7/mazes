@@ -17,10 +17,14 @@ func _ready():
 	# Initialization here
 	pass
 
-func start_animation(dest, dir):
+func start_animation(dest, dir, offset):
+	self.frames_left = 90
 	self.animation = true
 	self.destroy = dest #free the node after the animation is complete?
-	self.direction = dir #sinking or rising
+	self.direction = dir #sinking (<0) or rising (>0)
+	self.frame_offset = offset
+	if self.direction > 0:
+		self.translation -= frames_left * movement * direction
 	pass
 	
 # the walls start moving up/down after an optional timeoout period
