@@ -21,8 +21,8 @@ func swap_to_2():
 	set1.start_animation(true, -1, 0)
 	set2.start_animation(false, 1, 30)
 	set2.visible = true
-#	self.get_node("OmniLight").visible = false
-#	self.translation = Vector3(-17.43, 0.475, -3.13)
+	self.get_node("OmniLight").visible = false
+	self.translation += Vector3(0, -20, 0)
 	pass
 
 func use(object):
