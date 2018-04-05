@@ -17,7 +17,7 @@ func _ready():
 	# Initialization here
 	self.get_node("Area").set_meta("type","usable")
 	self.get_node("Area").set_meta("name","button")	
-	wall_parent = get_tree().get_root().get_node("maze/walls")
+	wall_parent = get_node("../walls") #get_tree().get_root().get_node("maze/walls")
 	set1 = wall_parent.get_node("maze1") #a set of walls that makes up the first part of the maze
 	set2 = wall_parent.get_node("maze2")
 	set3 = wall_parent.get_node("generated_maze1")
